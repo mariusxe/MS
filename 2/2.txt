@@ -1,0 +1,64 @@
+#include<fstream>
+#include<string.h>
+#include<cmath>
+#include<iostream>
+using namespace std;
+
+long i,j,x,y,seed;
+
+
+void generareMidsquare()
+{
+    int seed;
+	for (int i=1; i<= 30; i++)
+	{
+		seed = seed*(seed+19);
+		seed = ((seed / 100)+96)%10000;
+		cout << seed<<" ";
+	}
+	cout << "\n";
+}
+void generareLehmer(){
+	int x = 27;
+	int a = 17;
+	int c = 43;
+	int m = 100;
+	for (int i= 1; i <=30;i++){
+		x = (a*x+c)% m;
+		cout <<x<< " ";
+	}
+	cout << "\n";
+	
+float evaluare(int alegere)
+{
+    int x,y,i,j;
+    for (i=1;i<10000;i++)
+    {
+        switch(alegere)
+        {
+            case 1:
+            x=generareMidsquare();
+            y=generareMidsquare();
+            break;
+            
+            case 2:
+            x=generareLehmer();
+            y=generareLehmer();
+            break;
+        }
+        if (x*x +y*y <= 10000*10000)
+            j=j+1;
+        
+    }
+    return j/2500;
+}
+	
+
+}
+int main()
+{
+    seed=1234;
+	cout << evaluare(1) << "\n"
+	cout << evaluare(2) << "\n"
+	return 0;
+}
